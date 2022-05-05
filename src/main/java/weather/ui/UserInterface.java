@@ -16,8 +16,6 @@ public class UserInterface {
 	private double longitude;
 	private double latitude;
 
-
-
 	public void getWeatherForVienna(){
 
 		longitude = 16;
@@ -25,7 +23,7 @@ public class UserInterface {
 
 		String forecastUrlString = "https://api.darksky.net/forecast/##key##/##latitude##,##longitude####time##";
 
-		//TODO enter the coordinates
+		//Tenter the coordinates
 
 		//Geo Koord. Wien
 		//Breitengrad von Wien	48.208174
@@ -46,7 +44,7 @@ public class UserInterface {
 	public void getWeatherForLosAngeles(){
 
 
-		//TODO enter the coordinates
+		//enter the coordinates
 		//done
 
 		longitude = 41;
@@ -65,15 +63,11 @@ public class UserInterface {
 		//-118.4068
 		//GPS Koordinaten von Los Angeles:
 		//34° 6‘ 50.04 N 118° 24‘ 24.48 W
-
-		ctrl.process(Location2);
-
 	}
 
 	public void getWeatherForRome(){
 
-
-		//TODO enter the coordinates*
+		//enter the coordinates
 		//done
 
 		longitude = 139;
@@ -94,31 +88,26 @@ public class UserInterface {
 		//GPS Koordinaten von Tokio:
 		//35° 41‘ 22.92 N 139° 41‘ 31.92 E
 
-
-		ctrl.process(Location3);
-
-}
+	}
 	
 	public void getWeatherByCoordinates() {
-		//TODO read the coordinates from the cmd
-		//TODO enter the coordinates
+		//read the coordinates from the cmd
+		//Tenter the coordinates
 
-		Longitude longitude = new Longitude(139);
-		Latitude latitude = new Latitude(35);
+		// Es macht leider nicht was es tun soll.. Es werden nicht die Werte ausgegeben, die mit der direkten Stadtauswahl ausgegeben werden.
+		// longitude und latitude kommen laut Debug nicht im WeatherController an.
+
+		BufferedReader inReader = new BufferedReader(new InputStreamReader(System.in));
 
 		Scanner scanner = new Scanner(System.in);
+
 		System.out.println("Give Longitude: ");
-
-
+		Longitude longitude = new Longitude(readDouble(-180, 180));
 		System.out.println("Give Latitude: ");
-
-		System.out.println("Danke, Next");
-
-		// Das ist ein Pfusch und muss dringend überarbeitet werden.
+		Latitude latitude = new Latitude(readDouble(-90, 90));
 
 		GeoCoordinates Location4 = new GeoCoordinates(longitude, latitude);
 		ctrl.process(Location4);
-		
 	}
 
 	public void start() {
@@ -148,7 +137,7 @@ public class UserInterface {
 		return value.trim();
 	}
 
-	protected Double readDouble(int lowerlimit, int upperlimit) 
+	protected Double readDouble(int lowerlimit, int upperlimit)
 	{
 		Double number = null;
 		while(number == null) {
